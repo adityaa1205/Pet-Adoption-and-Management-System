@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, KeyRound, ArrowRight } from "lucide-react";
 import ThemeToggle from '../ThemeToggle';
 
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/api";
 
 const VerifyAccount: React.FC = () => {
   const location = useLocation();

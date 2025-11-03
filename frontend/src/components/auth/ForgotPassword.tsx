@@ -4,7 +4,7 @@ import { Mail, Lock, KeyRound, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle';
 
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/api";
 
 const ForgotPassword: React.FC = () => {
   const [step, setStep] = useState<1 | 2>(1);
