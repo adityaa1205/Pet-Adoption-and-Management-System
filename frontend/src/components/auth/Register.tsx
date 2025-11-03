@@ -14,7 +14,8 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import ThemeToggle from '../ThemeToggle';
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/api"; // change if different
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000/api";
+ // change if different
 
 interface FormData {
   username: string;

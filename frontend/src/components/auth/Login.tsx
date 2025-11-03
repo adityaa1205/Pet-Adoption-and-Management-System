@@ -5,7 +5,8 @@ import { Heart, Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
 import ThemeToggle from '../ThemeToggle';
 import LoadingScreen from '../LoadingScreem';
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000/api";
+
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
