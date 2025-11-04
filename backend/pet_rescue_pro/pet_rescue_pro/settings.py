@@ -54,10 +54,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://pet-adoption-and-management-system-ed9ysyyil.vercel.app",
-    "http://localhost:5173",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'pet_rescue_pro.urls'
 
@@ -142,12 +139,7 @@ SIMPLE_JWT = {
 ADMINS = [('Admin', 'gopim2565@gmail.com')]
 
 AUTH_USER_MODEL = 'pet_rescue_app.Profile'
-ALLOWED_HOSTS = [
-    "pet-adoption-and-management-system.onrender.com",
-    "pet-adoption-and-rescue-management-system.onrender.com",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ['pet-adoption-and-rescue-management-system.onrender.com', 'localhost', '127.0.0.1']
 
 
 # ==== Email Settings ====
