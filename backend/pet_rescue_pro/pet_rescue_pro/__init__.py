@@ -1,12 +1,15 @@
 from django.apps import apps
-from django.db import connections
 from django.core.management import call_command
+from django.db import connections
 
-def run_migrations():
+def apply_migrations():
     try:
-        # Run only after all apps are ready and DB is connected
         if apps.ready and connections['default'].connection:
             call_command("migrate", interactive=False)
-            print("✅ Migrations applied successfully")
+            print("✅ Migrations applied")
     except Exception as e:
-        print("❌ Migration error:", e)
+        print(f"❌ Migration error: {e}")
+
+# Run only after Django boots
+from django.core.signals import request_started
+request_started.connect(lambda **kwargs: apply_migrations(), dispatch_uid="apply_migrations_once")
