@@ -168,7 +168,8 @@ if not DEBUG:
         'version': 1,
         'disable_existing_loggers': False,
     }
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
     
 
 
