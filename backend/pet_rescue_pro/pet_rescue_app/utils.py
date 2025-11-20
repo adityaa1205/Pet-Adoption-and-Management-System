@@ -93,7 +93,7 @@ def send_otp_email(email: str, purpose: str = "verification", otp: str = None) -
             <p style="font-size: 24px; font-weight: bold; text-align: center; color: #E77B32; letter-spacing: 2px;">
                 {otp}
             </p>
-            <p>This OTP is valid for <b>10 minutes</b>. If you did not request this, you can safely ignore this email.</p>
+            <p>This OTP: is valid for <b>10 minutes</b>. If you did not request this, you can safely ignore this email.</p>
             <p style="color: #555; font-size: 14px;">⚠ For your security, please <b>do not share</b> this OTP with anyone.</p>
             <br/>
             <p>Warm regards,<br/>Pet Rescue Support Team</p>
@@ -109,9 +109,15 @@ def send_otp_email(email: str, purpose: str = "verification", otp: str = None) -
     """
 
     # Send email using EmailMultiAlternatives
-    msg = EmailMultiAlternatives(subject, text_content, settings.DEFAULT_FROM_EMAIL, [email])
-    msg.attach_alternative(html_content, "text/html")
-    msg.send()
-
+    try:
+        
+        msg = EmailMultiAlternatives(subject, text_content, settings.DEFAULT_FROM_EMAIL, [email])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+    except Exception as e:
+     print("Email sending failed", e)
+    
     return otp
+
+    
 

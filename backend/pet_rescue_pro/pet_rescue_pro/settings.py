@@ -77,31 +77,31 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pet_rescue_pro.wsgi.application'
 
 # ==== Database ====
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.getenv("DB_NAME"),
-#         "USER": os.getenv("DB_USER"),
-#         "PASSWORD": os.getenv("DB_PASSWORD"),
-#         "HOST": os.getenv("DB_HOST", "localhost"),
-#         "PORT": os.getenv("DB_PORT", "5432"),
-#     }
-# }
-# if os.getenv('DATABASE_URL'):
-#     DATABASES['default'] = dj_database_url.config(
-#         default=os.getenv('DATABASE_URL'),
-#         conn_max_age=600,
-#         ssl_require=True  # often needed for Neon/Railway/Supabase
-#     )
-import dj_database_url
-
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    )
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST", "localhost"),
+        "PORT": os.getenv("DB_PORT", "5432"),
+    }
 }
+if os.getenv('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True  # often needed for Neon/Railway/Supabase
+    )
+# import dj_database_url
+
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default=os.getenv("DATABASE_URL"),
+#         conn_max_age=600,
+#         ssl_require=True
+#     )
+# }
 
 
 # ==== Password Validation ====
@@ -146,7 +146,7 @@ SIMPLE_JWT = {
 }
 
 # ==== Admins ====
-ADMINS = [('Admin', 'gopim2565@gmail.com')]
+ADMINS = [('Admin', '2k22.cseaiml.2211219@gmail.com')]
 
 AUTH_USER_MODEL = 'pet_rescue_app.Profile'
 ALLOWED_HOSTS = ['pet-adoption-and-management-system.onrender.com', 'localhost', '127.0.0.1']
@@ -154,8 +154,8 @@ ALLOWED_HOSTS = ['pet-adoption-and-management-system.onrender.com', 'localhost',
 
 # ==== Email Settings ====
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.mailersend.net"
-EMAIL_PORT = 2525
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
@@ -165,7 +165,7 @@ SERVER_EMAIL = EMAIL_HOST_USER
 
 # Disable admin error emails on production (Render)
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     
 
 
